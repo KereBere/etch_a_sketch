@@ -1,0 +1,43 @@
+ body{
+     display: flex;
+     justify-content: center;
+ }
+
+.main{
+    display: flex;
+    max-width: 1100px;
+    justify-content: center;
+    flex-direction: column;
+}
+.nav-but{
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+button{
+    width: 10rem;
+    height: 3rem;
+    margin: 1rem;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: repeat(20, 1fr);
+    grid-template-columns: repeat(20, 1fr);
+    border: black 1px solid;
+    gap: 1px;
+}
+
+
+.gridBlock{
+    height: 30px;
+    width: 30px;
+}
+
+
+.gridBlock-1{
+    height: 30px;
+    width: 30px;
+    background-color: black;
+}
+
