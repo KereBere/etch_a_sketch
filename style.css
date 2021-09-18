@@ -5,8 +5,8 @@
 
 .main{
     display: flex;
-    max-width: 1100px;
-    justify-content: center;
+    width: 1000px;
+    align-items: center;
     flex-direction: column;
 }
 .nav-but{
@@ -21,11 +21,9 @@ button{
 }
 
 .container {
-    display: grid;
-    grid-template-rows: repeat(20, 1fr);
-    grid-template-columns: repeat(20, 1fr);
+    display: grid; 
+    justify-items: center;
     border: black 1px solid;
-    gap: 1px;
 }
 
 
@@ -40,4 +38,4 @@ button{
     width: 30px;
     background-color: black;
 }
-
+ 

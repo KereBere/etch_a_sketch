@@ -1,49 +1,67 @@
 const container = document.querySelector('.container');
-const gridBlock = document.createElement('div');
 const mainCon = document.getElementsByClassName('main');
-const clearButton = document.querySelector('.clear');
+const clearGrid = document.querySelector('.clear');
 const setGrid = document.querySelector('.set-grid');
-let gridNumber = 400;
 
+onStartGrid(20);
 
 setGrid.onclick = function () {
-    number = prompt("Enter a number less 100", "");
-    gridNumber = number * number;
-    console.log(gridNumber);
+    let gridNumber = prompt('How many grids do you wish?', "");
+        removeAllChildNodes(container);
+        onStartGrid(gridNumber);  
 }
 
-for ( let i = 0; i < gridNumber ; i++){
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+function onStartGrid(gridSize){
+
+    container.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+    container.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
+
+    for(let i = 1; i <= gridSize*gridSize ; i++){
     const gridBlock = document.createElement('div');
     gridBlock.id = ('gridBlock'+i);
-    gridBlock.classList = "gridBlock";
     container.appendChild(gridBlock);
-
-}
- 
-const choices = document.querySelectorAll('.gridBlock');
-
-
-choices.forEach(choice => choice.addEventListener('mouseover', play));
-
-
-function play(e) {
-    userChoice = document.getElementById(e.target.id);
-    userChoice.style.backgroundColor = "black";
-    console.log(userChoice); 
-}
-
-
-//Create the Grid
-clearButton.onclick = function () {
-    const selectBlock = document.querySelectorAll('.gridBlock');
-    for (let i = 0; i < selectBlock.length; i++) {
-        selectBlock[i].style.backgroundColor = "pink";
+    gridBlock.classList = 'gridBlock'
+    }  
+    let choices = document.querySelectorAll('.gridBlock');
+    choices.forEach(choice => choice.addEventListener('mouseover', play));
+    for (let i = 0; i < choices.length; i++) {
+        choices[i].style.width = `${600 / gridSize}px`;
+        choices[i].style.height = `${600 / gridSize}px`;
     }
-    console.log('hele');
-  };
 
+}
 
+function play(e){
+const userChoice = document.getElementById(e.target.id);
+if(userChoice.classList !== ""){
+    userChoice.style.backgroundColor = randomColor(0);
+    console.log(userChoice)
+}else{
+    userChoice.style.backgroundColor = randomColor(1);
 
-// clearButton.addEventListener("click", function(){
-//     alert("dwadada");
-// });
+}
+}
+
+randomColor();
+
+clearGrid.onclick = function (){
+    const choices = document.querySelectorAll('.gridBlock');
+    choices.forEach(choice => {
+        choice.style.backgroundColor = "";
+    });
+}   
+
+function randomColor(e){ 
+    const hsl1 = Math.floor(Math.random()*360);
+    const hsl2 = Math.floor(Math.random()*100);
+    const hsl3 = Math.floor(Math.random()*100);
+
+        
+    return `hsl(${hsl1}, ${hsl2 + e}%, ${hsl3}%)`
+}
