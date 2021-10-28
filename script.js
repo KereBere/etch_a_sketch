@@ -7,9 +7,9 @@ onStartGrid(20);
 
 setGrid.onclick = function () {
     let gridNumber = prompt('How many grids do you wish?', "");
-        removeAllChildNodes(container);
-        gridNumber === null ? gridNumber = 10 : gridNumber;
-        onStartGrid(gridNumber);  
+     removeAllChildNodes(container);
+     gridNumber == null ? gridNumber = 20 : gridNumber;
+     onStartGrid(gridNumber);  
 }
 
 function removeAllChildNodes(parent) {
